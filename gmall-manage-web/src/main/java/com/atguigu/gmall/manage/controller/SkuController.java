@@ -26,9 +26,10 @@ public class SkuController {
         pmsSkuInfo.setProductId(pmsSkuInfo.getSpuId());
 
         // 处理默认图片
+        //因为172.20.10.2这台服务器上面内存使用超过90%，所以不能使用fastfds，在添加SPU的时候不能返回网址
         String skuDefaultImg = pmsSkuInfo.getSkuDefaultImg();
         if(StringUtils.isBlank(skuDefaultImg)){
-            pmsSkuInfo.setSkuDefaultImg(pmsSkuInfo.getSkuImageList().get(0).getImgUrl());
+            //pmsSkuInfo.setSkuDefaultImg(pmsSkuInfo.getSkuImageList().get(0).getImgUrl());
         }
 
         skuService.saveSkuInfo(pmsSkuInfo);
